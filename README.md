@@ -5,7 +5,6 @@
 </p>
 
 <h1 align="center">S H E L L E Y</h1>
-
 <div align="center">
 
 [![Known Vulnerabilities](https://snyk.io/test/github/action-is-hope/shelley/badge.svg)](https://snyk.io/test/github/action-is-hope/shelley)
@@ -17,7 +16,9 @@
 
 ## Overview
 
-## Usage
+Shelley is an unstyled first UI library, meaning that it ships with a very minimal set of styles giving you complete control of your styling strategy.
+
+That doesn't mean we don't have a base theme for you to start with, it just means that you have complete control over your styles and how they are put together. If you are a fan of CSS and like/need to control the CSS used in your project then Shelley might be for you. if this idea repulses you then maybe go for something like Material UI which actually does have an unstyled option these days. Adobe Spectrum looks good too.
 
 ## Docs
 
