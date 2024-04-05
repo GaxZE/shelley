@@ -18,7 +18,7 @@ describe("RadioGroup", () => {
       <RadioGroup {...fieldPropsTest}>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(inputEl).should("not.be.checked");
   });
@@ -28,13 +28,13 @@ describe("RadioGroup", () => {
       <RadioGroup {...fieldPropsTest}>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(fieldLabel)
       .should("have.text", "Field Label")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-labelledby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-labelledby", id),
       );
   });
 
@@ -44,7 +44,7 @@ describe("RadioGroup", () => {
       <RadioGroup {...fieldPropsTest} onChange={onChangeSpy}>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get("input[value='rad1']").click();
     cy.get("@onChangeSpy").should("have.been.calledWith", "rad1");
@@ -59,7 +59,7 @@ describe("RadioGroup", () => {
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
         <Radio value="rad3">Radio label 3</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get("input[value='rad1']").should("not.be.checked");
     cy.get("input[value='rad2']").should("be.checked");
@@ -72,7 +72,7 @@ describe("RadioGroup", () => {
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
         <Radio value="rad3">Radio label 3</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get("input[value='rad1']").should("not.be.checked");
     cy.get("input[value='rad2']").should("be.checked");
@@ -86,7 +86,7 @@ describe("RadioGroup isDisabled and isReadOnly", () => {
       <RadioGroup {...fieldPropsTest} isDisabled>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(inputEl).should("be.disabled");
   });
@@ -98,7 +98,7 @@ describe("RadioGroup isDisabled and isReadOnly", () => {
           Radio label 1
         </Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get("input[value='rad1']").should("be.disabled");
     cy.get("input[value='rad2']").should("not.be.disabled");
@@ -110,7 +110,7 @@ describe("RadioGroup isDisabled and isReadOnly", () => {
       <RadioGroup {...fieldPropsTest} onChange={onChangeSpy} isReadOnly>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get("input[value='rad1']").click().and("not.be.checked");
     cy.get("input[value='rad2']").click().and("not.be.checked");
@@ -124,13 +124,13 @@ describe("RadioGroup Help", () => {
       <RadioGroup {...fieldPropsTest} description="Number 5 likes input.">
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(fieldDesc)
       .should("have.text", "Number 5 likes input.")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-describedby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -143,13 +143,13 @@ describe("RadioGroup Help", () => {
       >
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-describedby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -162,14 +162,14 @@ describe("RadioGroup Help", () => {
         validationState="invalid"
       >
         <Radio value="cb1">Radio label 1</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(fieldDesc).should("not.exist");
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-describedby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-describedby", id),
       );
   });
 });
@@ -180,7 +180,7 @@ describe("Radio", () => {
       <RadioGroup {...fieldPropsTest}>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     cy.get(inputEl).should("not.be.checked");
   });

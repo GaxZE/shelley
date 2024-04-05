@@ -8,7 +8,7 @@ module.exports = {
   webpackFinal: (config) => {
     /* find all css loaders and add exclude .st.css files from them */
     const indexOfCssRules = config.module.rules.findIndex(
-      (rule) => rule.test.toString() === "/\\.css$/"
+      (rule) => rule.test.toString() === "/\\.css$/",
     );
 
     if (indexOfCssRules != -1) {

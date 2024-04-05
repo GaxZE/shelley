@@ -16,7 +16,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic>
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(button).should("exist").and("have.length", 2);
       cy.get(`${button}:first-child`).should("exist").and("have.text", "One");
@@ -28,7 +28,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic className="custom-class">
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(buttonGroup)
         .should("have.attr", "class")
@@ -40,7 +40,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic splitButton>
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(buttonGroup)
         .should("have.attr", "class")
@@ -52,7 +52,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic>
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(buttonGroup)
         .should("have.attr", "class")
@@ -64,7 +64,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic orientation="vertical">
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(buttonGroup)
         .should("have.attr", "class")
@@ -82,7 +82,7 @@ describe("ButtonGroup", () => {
               onPressSpy(
                 (buttonGroupRef?.current?.attributes as DataIdDOMAttribute)?.[
                   "data-id"
-                ]?.value
+                ]?.value,
               )
             }
           >
@@ -92,7 +92,7 @@ describe("ButtonGroup", () => {
             <Button data-button>One</Button>
             <Button data-button>Two</Button>
           </ButtonGroup>
-        </>
+        </>,
       );
       cy.get(`[data-id="cy-button-trigger"]`).realClick();
       cy.get("@onPressSpy").should("have.been.calledWith", "testRef");
@@ -104,7 +104,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic variant={false} vol={false} tone={false}>
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       const buttonOneClass = cy.get(button).should("have.attr", "class");
       buttonOneClass.and("to.not.have.string", "variant");
@@ -116,7 +116,7 @@ describe("ButtonGroup", () => {
         <ButtonGroup>
           <span data-span>one</span>
           <span data-span>one</span>
-        </ButtonGroup>
+        </ButtonGroup>,
       );
       cy.get("[data-span]").should("not.have.attr", "class");
       cy.get("[data-span]").should("not.have.attr", "variant");
@@ -131,7 +131,7 @@ describe("ButtonGroup", () => {
             Two
           </Button>
           <Button data-button>Three</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(button)
         .should("have.attr", "class")
@@ -145,7 +145,7 @@ describe("ButtonGroup", () => {
         <ButtonGroupBasic isDisabled>
           <Button data-button>One</Button>
           <Button data-button>Two</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(button)
         .should("be.disabled")
@@ -163,7 +163,7 @@ describe("ButtonGroup", () => {
             Two
           </Button>
           <Button data-button>Three</Button>
-        </ButtonGroupBasic>
+        </ButtonGroupBasic>,
       );
       cy.get(button).should("be.disabled");
       cy.get("[data-button-two]").should("not.be.disabled");

@@ -27,7 +27,7 @@ const books: BookType[] | undefined = [
 ];
 
 const BasicComboBox = function (
-  props: Partial<ComboBoxMultiSelectProps<BookType>>
+  props: Partial<ComboBoxMultiSelectProps<BookType>>,
 ) {
   return (
     <div style={{ padding: "0 10px" }}>
@@ -51,7 +51,7 @@ const BasicComboBox = function (
 };
 
 const ComboBoxControlledInput = function (
-  props: Partial<ComboBoxMultiSelectProps<BookType>>
+  props: Partial<ComboBoxMultiSelectProps<BookType>>,
 ) {
   const [inputValue, setInputValue] = useState("");
   return (
@@ -110,7 +110,7 @@ describe("Basic ComboBox", () => {
           // Non-aria attributes
           .and("have.attr", "autocomplete", "off")
           .and("have.attr", "autocorrect", "off")
-          .and("have.attr", "spellcheck", "false")
+          .and("have.attr", "spellcheck", "false"),
       );
     // Trigger has listbox popup.
     cy.get(trigger).should("have.attr", "aria-haspopup", "listbox");
@@ -246,7 +246,7 @@ describe("Style checks", () => {
     cy.get(comboBoxField)
       .invoke("outerWidth")
       .then((width) =>
-        cy.get(popup).invoke("outerWidth").should("equal", width)
+        cy.get(popup).invoke("outerWidth").should("equal", width),
       );
   });
 });
@@ -330,7 +330,7 @@ describe("ComboBox Help", () => {
   });
   it("renders errorMessage correctly.", () => {
     cy.mount(
-      <BasicComboBox errorMessage="No input!" validationState="invalid" />
+      <BasicComboBox errorMessage="No input!" validationState="invalid" />,
     );
     cy.get(fieldError).should("have.text", "No input!");
     // @todo
@@ -346,7 +346,7 @@ describe("ComboBox Help", () => {
         description="Number 5 likes input."
         errorMessage="No input!"
         validationState="invalid"
-      />
+      />,
     );
     cy.get(fieldDesc).should("not.exist");
     cy.get(fieldError).should("have.text", "No input!");

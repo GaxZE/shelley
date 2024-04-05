@@ -38,7 +38,7 @@ describe("Basic TextField", () => {
       .should("have.text", "My field")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldInput).should("have.attr", "aria-labelledby", id)
+        cy.get(fieldInput).should("have.attr", "aria-labelledby", id),
       );
   });
 
@@ -57,7 +57,11 @@ describe("Basic TextField", () => {
 
   it("isReadOnly.", () => {
     cy.mount(
-      <TextField {...fieldPropsTest} value="Delete me if you can!" isReadOnly />
+      <TextField
+        {...fieldPropsTest}
+        value="Delete me if you can!"
+        isReadOnly
+      />,
     );
     cy.get(textField)
       .should("have.attr", "class")
@@ -71,13 +75,13 @@ describe("Basic TextField", () => {
 describe("TextField Help", () => {
   it("renders description correctly.", () => {
     cy.mount(
-      <TextField {...fieldPropsTest} description="Number 5 likes input." />
+      <TextField {...fieldPropsTest} description="Number 5 likes input." />,
     );
     cy.get(fieldDesc)
       .should("have.text", "Number 5 likes input.")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldInput).should("have.attr", "aria-describedby", id)
+        cy.get(fieldInput).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -92,7 +96,7 @@ describe("TextField Help", () => {
         {...fieldPropsTest}
         errorMessage="No input!"
         validationState="invalid"
-      />
+      />,
     );
     cy.get(fieldError)
       .should("have.text", "No input!")
@@ -101,7 +105,7 @@ describe("TextField Help", () => {
         cy
           .get(fieldInput)
           .should("have.attr", "aria-describedby", id)
-          .should("have.attr", "aria-invalid", "true")
+          .should("have.attr", "aria-invalid", "true"),
       );
   });
 
@@ -112,7 +116,7 @@ describe("TextField Help", () => {
         description="Number 5 likes input."
         errorMessage="No input!"
         validationState="invalid"
-      />
+      />,
     );
     cy.get(fieldDesc).should("not.exist");
     cy.get(fieldError)
@@ -122,7 +126,7 @@ describe("TextField Help", () => {
         cy
           .get(fieldInput)
           .should("have.attr", "aria-describedby", id)
-          .should("have.attr", "aria-invalid", "true")
+          .should("have.attr", "aria-invalid", "true"),
       );
   });
 });

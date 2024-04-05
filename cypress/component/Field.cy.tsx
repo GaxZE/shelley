@@ -21,7 +21,7 @@ describe("Basic Field", () => {
     cy.mount(
       <Field {...fieldPropsTest}>
         <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
+      </Field>,
     );
     cy.get("#testField")
       .should("be.visible")
@@ -34,7 +34,7 @@ describe("Basic Field", () => {
     cy.mount(
       <Field {...fieldPropsTest}>
         <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
+      </Field>,
     );
     cy.get(fieldLabel)
       .should("have.attr", "id", "label-id")
@@ -47,7 +47,7 @@ describe("Basic Field", () => {
     cy.mount(
       <Field {...fieldPropsTest} isDisabled>
         <input id="testField" type="text" aria-labelledby="label-id" disabled />
-      </Field>
+      </Field>,
     );
     cy.get(field)
       .should("have.attr", "class")
@@ -69,7 +69,7 @@ describe("Field Help", () => {
           aria-labelledby="label-id"
           aria-describedby="description-id"
         />
-      </Field>
+      </Field>,
     );
     cy.get(fieldDescription)
       .should("have.attr", "id", "description-id")
@@ -91,7 +91,7 @@ describe("Field Help", () => {
           aria-invalid="true"
           aria-describedby="error-id"
         />
-      </Field>
+      </Field>,
     );
     cy.get(fieldError)
       .should("have.attr", "id", "error-id")
@@ -115,7 +115,7 @@ describe("Field Help", () => {
           aria-invalid="true"
           aria-describedby="error-id"
         />
-      </Field>
+      </Field>,
     );
     cy.get(fieldDescription).should("not.exist");
     cy.get(fieldError).should("be.visible");
@@ -127,7 +127,7 @@ describe("Adornments", () => {
     cy.mount(
       <Field {...fieldPropsTest} startAdornment="£">
         <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
+      </Field>,
     );
     cy.get('[data-id="field--startAdornment"]')
       .should("exist")
@@ -138,7 +138,7 @@ describe("Adornments", () => {
     cy.mount(
       <Field {...fieldPropsTest} endAdornment=".00">
         <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
+      </Field>,
     );
     cy.get('[data-id="field--endAdornment"]')
       .should("exist")
@@ -153,7 +153,7 @@ describe("Adornments", () => {
         endAdornment={<div id="endAdornmentElement">end adornment</div>}
       >
         <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
+      </Field>,
     );
     cy.get('[data-id="field--startAdornment"]').should("not.exist");
     cy.get('[data-id="field--endAdornment"]').should("not.exist");

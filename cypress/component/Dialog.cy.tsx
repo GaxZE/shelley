@@ -78,11 +78,11 @@ describe("Basic Dialog", () => {
             onPressSpy(
               (dialogRef?.current?.attributes as DataIdDOMAttribute)?.[
                 "data-id"
-              ]?.value
+              ]?.value,
             )
           }
         />
-      </>
+      </>,
     );
     cy.get("[data-ref-test]").click();
     cy.get("@onPressSpy").should("have.been.calledWith", "dialog");
@@ -116,7 +116,7 @@ describe("Close button and isDismissable", () => {
       <StandaloneDialog
         isDismissable
         closeIcon={<span data-id-custom-icon />}
-      />
+      />,
     );
     cy.get(closeButton).get("[data-id-custom-icon]").should("exist");
   });

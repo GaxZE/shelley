@@ -14,7 +14,7 @@ describe("Checkbox", () => {
     cy.mount(
       <Checkbox defaultSelected data-id="checkbox">
         Subscribe
-      </Checkbox>
+      </Checkbox>,
     );
     cy.get(inputEl).should("be.checked");
   });
@@ -24,7 +24,7 @@ describe("Checkbox", () => {
     cy.mount(
       <Checkbox onChange={onChangeSpy} data-id="checkbox">
         Subscribe
-      </Checkbox>
+      </Checkbox>,
     );
     cy.get(checkboxWithLabel).click();
     cy.get("@onChangeSpy").should("have.been.calledWith", true);
@@ -35,7 +35,7 @@ describe("Checkbox", () => {
     cy.mount(
       <Checkbox onChange={onChangeSpy} isDisabled data-id="checkbox">
         Subscribe
-      </Checkbox>
+      </Checkbox>,
     );
     cy.get(checkboxWithLabel)
       .should("have.attr", "class")
@@ -48,7 +48,7 @@ describe("Checkbox", () => {
     cy.mount(
       <Checkbox onChange={onChangeSpy} isReadOnly data-id="checkbox">
         Subscribe
-      </Checkbox>
+      </Checkbox>,
     );
     cy.get(inputEl).click();
     cy.get("@onChangeSpy").should("have.not.been.called");
@@ -59,7 +59,7 @@ describe("Checkbox", () => {
     cy.mount(
       <Checkbox onChange={onChangeSpy} isIndeterminate data-id="checkbox">
         Subscribe
-      </Checkbox>
+      </Checkbox>,
     );
     cy.get(checkboxWithLabel)
       .should("have.attr", "class")
@@ -80,7 +80,7 @@ describe("Checkbox", () => {
     cy.mount(
       <Checkbox className="cypress-test" data-id="checkbox">
         Subscribe
-      </Checkbox>
+      </Checkbox>,
     );
 
     cy.get(checkboxWithLabel)

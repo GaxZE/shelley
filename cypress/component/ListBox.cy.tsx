@@ -8,7 +8,7 @@ const itemThree = '[data-key="item-three"]';
 // const loader = '[data-id="listBox--progressCircle"]';
 
 const BasicListBox = function <T extends object>(
-  props: Omit<ListBoxProps<T>, "children">
+  props: Omit<ListBoxProps<T>, "children">,
 ) {
   return (
     <ListBox {...props}>
@@ -30,7 +30,7 @@ describe("Basic ListBox", () => {
         aria-describedby="described-by-id"
         // Identifies the element (or elements) that provide a detailed, extended description for the object.
         aria-details="details-id"
-      />
+      />,
     );
     cy.get(listbox)
       .should("have.attr", "id", "example1")
@@ -45,12 +45,12 @@ describe("Basic ListBox", () => {
         id="example2"
         aria-labelledby="labelled-by-id"
         aria-label="I label myself if I have aria-label"
-      />
+      />,
     );
     cy.get(listbox).and(
       "have.attr",
       "aria-labelledby",
-      "example2 labelled-by-id"
+      "example2 labelled-by-id",
     );
   });
 
@@ -72,7 +72,7 @@ describe("Basic ListBox", () => {
   it("keyboard focus should not wrap by default", () => {
     cy.mount(<BasicListBox autoFocus="first" />);
     cy.get("[data-cy-root]").type(
-      "{downArrow}{downArrow}{downArrow}{downArrow}"
+      "{downArrow}{downArrow}{downArrow}{downArrow}",
     );
     cy.get(itemThree).should("be.focused");
   });
@@ -80,7 +80,7 @@ describe("Basic ListBox", () => {
   it("keyboard focus wraps (loops) via shouldFocusWrap", () => {
     cy.mount(<BasicListBox autoFocus="first" shouldFocusWrap />);
     cy.get("[data-cy-root] li:first-child").type(
-      "{downArrow}{downArrow}{downArrow}{downArrow}"
+      "{downArrow}{downArrow}{downArrow}{downArrow}",
     );
     cy.get(itemTwo).should("be.focused");
   });
@@ -103,7 +103,7 @@ describe("Basic ListBox", () => {
       <BasicListBox
         selectionMode="single"
         onSelectionChange={onSelectionChangeSpy}
-      />
+      />,
     );
     cy.get(itemTwo).click();
     cy.get("@onSelectionChangeSpy").should("have.been.calledOnce", "item-two");
@@ -112,7 +112,7 @@ describe("Basic ListBox", () => {
     cy.get(itemTwo).type(" ");
     cy.get("@onSelectionChangeSpy").should(
       "have.been.calledThrice",
-      "item-two"
+      "item-two",
     );
   });
 });
@@ -139,7 +139,7 @@ describe("Uncontrolled listbox selection", () => {
       <BasicListBox
         selectionMode="single"
         defaultSelectedKeys={new Set(["item-two"])}
-      />
+      />,
     );
     cy.get(itemTwo).should("have.attr", "aria-selected").and("equal", "true");
   });
@@ -158,13 +158,13 @@ describe("Uncontrolled listbox selection", () => {
           // Send the first value of the resulting set to the on selection spy.
           onSelectionChangeSpy([...i][0]);
         }}
-      />
+      />,
     );
     // Select item
     cy.get(itemThree).click();
     cy.get("@onSelectionChangeSpy").should(
       "have.been.calledWith",
-      "item-three"
+      "item-three",
     );
     // And another
     cy.get(itemOne).click();
@@ -180,7 +180,7 @@ describe("Uncontrolled listbox selection", () => {
 
 // Controlled ListBox
 const ControlledListBox = function <T extends object>(
-  props: Omit<ListBoxProps<T>, "children">
+  props: Omit<ListBoxProps<T>, "children">,
 ) {
   const [selected, setSelected] = useState(props.selectedKeys || new Set([]));
   return (
@@ -217,7 +217,7 @@ describe("Controlled listbox selection", () => {
       <ControlledListBox
         selectionMode="single"
         selectedKeys={new Set(["item-two"])}
-      />
+      />,
     );
     cy.get(itemTwo).should("have.attr", "aria-selected").and("equal", "true");
   });
@@ -237,7 +237,7 @@ describe("Controlled listbox selection", () => {
     cy.get(itemThree).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-one, item-three"
+      "item-one, item-three",
     );
   });
 
@@ -248,12 +248,12 @@ describe("Controlled listbox selection", () => {
     cy.get(itemOne).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-three, item-one"
+      "item-three, item-one",
     );
     cy.get(itemTwo).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-three, item-one, item-two"
+      "item-three, item-one, item-two",
     );
     // deselect
     cy.get(itemOne).click();
@@ -265,7 +265,7 @@ describe("Controlled listbox selection", () => {
     cy.get(itemThree).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-two, item-one, item-three"
+      "item-two, item-one, item-three",
     );
   });
 });

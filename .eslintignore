@@ -9,4 +9,4 @@ dist
 #Files
 cypress.d.ts
 cypress/support/commands.ts
-src/stories/*
+packages/*/src/stories/*

@@ -16,7 +16,7 @@ const itemTwo = '[data-key="item-two"]';
 const itemThree = '[data-key="item-three"]';
 
 const BasicSelect = function <T extends object>(
-  props: Omit<SelectProps<T>, "children">
+  props: Omit<SelectProps<T>, "children">,
 ) {
   return (
     <div style={{ padding: "0 10px" }}>
@@ -36,7 +36,7 @@ const BasicSelect = function <T extends object>(
 };
 
 const DynamicCollection = function <T extends object>(
-  props: Omit<SelectProps<T>, "children">
+  props: Omit<SelectProps<T>, "children">,
 ) {
   const options = [
     { id: 1, name: "Item One" },
@@ -91,7 +91,7 @@ describe("Basic Select", () => {
         cy
           .get(trigger)
           .should("have.attr", "aria-labelledby")
-          .and("contain", id)
+          .and("contain", id),
       );
     // Inner value of button is part of the labelling for field.
     cy.get(FieldValue)
@@ -101,7 +101,7 @@ describe("Basic Select", () => {
         cy
           .get(trigger)
           .should("have.attr", "aria-labelledby")
-          .and("contain", id)
+          .and("contain", id),
       );
     // Trigger has listbox popup.
     cy.get(trigger).should("have.attr", "aria-haspopup", "listbox");
@@ -120,7 +120,7 @@ describe("Basic Select", () => {
         cy
           .get(trigger)
           .should("have.attr", "aria-labelledby")
-          .and("contain", id)
+          .and("contain", id),
       );
   });
 
@@ -199,7 +199,7 @@ describe("Opening and closing", () => {
         <BasicSelect />
         <div style={{ height: "200vh" }}>Content</div>
         <div id="scrollToPoint">Scroll</div>
-      </div>
+      </div>,
     );
     cy.get(trigger).realClick();
     // Unable to test a realistic scroll
@@ -262,18 +262,18 @@ describe("Select Help", () => {
       .should("have.text", "Number 5 likes input.")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(trigger).should("have.attr", "aria-describedby", id)
+        cy.get(trigger).should("have.attr", "aria-describedby", id),
       );
   });
   it("renders errorMessage correctly.", () => {
     cy.mount(
-      <BasicSelect errorMessage="No input!" validationState="invalid" />
+      <BasicSelect errorMessage="No input!" validationState="invalid" />,
     );
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(trigger).should("have.attr", "aria-describedby", id)
+        cy.get(trigger).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -283,14 +283,14 @@ describe("Select Help", () => {
         description="Number 5 likes input."
         errorMessage="No input!"
         validationState="invalid"
-      />
+      />,
     );
     cy.get(fieldDesc).should("not.exist");
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(trigger).should("have.attr", "aria-describedby", id)
+        cy.get(trigger).should("have.attr", "aria-describedby", id),
       );
   });
 });

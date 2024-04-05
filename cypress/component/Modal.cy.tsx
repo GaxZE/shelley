@@ -56,7 +56,7 @@ describe("Isolation mode", () => {
       <ModalExample
         portalSelector="#portal"
         transitionProps={{ timeout: 190 }}
-      />
+      />,
     );
     cy.get(trigger).realClick();
     cy.get("[data-cy-root]").should("have.attr", "aria-hidden");
@@ -68,7 +68,7 @@ describe("Isolation mode", () => {
         portalSelector="#portal"
         focusOnProps={{ noIsolation: true }}
         transitionProps={{ timeout: 190 }}
-      />
+      />,
     );
     cy.get(trigger).realClick();
     cy.get(trigger).should("not.have.attr", "aria-hidden");
@@ -81,7 +81,7 @@ describe("Isolation mode", () => {
       <ModalExample
         portalSelector="#portal"
         transitionProps={{ timeout: 190, unmountOnExit: false }}
-      />
+      />,
     );
     cy.get(content).should("exist");
     cy.get("[data-cy-root]").should("not.have.attr", "aria-hidden");

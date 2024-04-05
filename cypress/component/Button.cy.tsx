@@ -37,7 +37,7 @@ describe("Button", () => {
         <Button data-id="cy-button" ref={buttonRef}>
           Save changes
         </Button>
-      </>
+      </>,
     );
     cy.get(`[data-id="cy-button-trigger"]`).realClick();
     cy.get(`[data-id="cy-button"]`).should("be.focused");
@@ -47,7 +47,7 @@ describe("Button", () => {
     cy.mount(
       <Button as="a" href="https://google.com">
         Link to Google
-      </Button>
+      </Button>,
     );
 
     cy.get("a")

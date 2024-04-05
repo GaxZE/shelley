@@ -18,7 +18,7 @@ describe("Basic CheckboxGroup", () => {
       <CheckboxGroup {...fieldPropsTest}>
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get(inputEl).should("not.be.checked");
   });
@@ -28,13 +28,13 @@ describe("Basic CheckboxGroup", () => {
       <CheckboxGroup {...fieldPropsTest}>
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get(fieldLabel)
       .should("have.text", "Field Label")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-labelledby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-labelledby", id),
       );
   });
 
@@ -44,7 +44,7 @@ describe("Basic CheckboxGroup", () => {
       <CheckboxGroup {...fieldPropsTest} onChange={onChangeSpy}>
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").click();
     cy.get("@onChangeSpy").should("have.been.calledWith", ["cb1"]);
@@ -59,7 +59,7 @@ describe("Basic CheckboxGroup", () => {
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
         <Checkbox value="cb3">Checkbox label 3</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").should("be.checked");
     cy.get("input[value='cb2']").should("not.be.checked");
@@ -72,7 +72,7 @@ describe("Basic CheckboxGroup", () => {
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
         <Checkbox value="cb3">Checkbox label 3</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").should("be.checked");
     cy.get("input[value='cb2']").should("not.be.checked");
@@ -86,7 +86,7 @@ describe("CheckboxGroup isDisabled and isReadOnly", () => {
       <CheckboxGroup {...fieldPropsTest} isDisabled>
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get(inputEl).should("be.disabled");
   });
@@ -98,7 +98,7 @@ describe("CheckboxGroup isDisabled and isReadOnly", () => {
           Checkbox label 1
         </Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").should("be.disabled");
     cy.get("input[value='cb2']").should("not.be.disabled");
@@ -110,7 +110,7 @@ describe("CheckboxGroup isDisabled and isReadOnly", () => {
       <CheckboxGroup {...fieldPropsTest} onChange={onChangeSpy} isReadOnly>
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").click().and("not.be.checked");
     cy.get("input[value='cb2']").click().and("not.be.checked");
@@ -125,7 +125,7 @@ describe("CheckboxGroup isDisabled and isReadOnly", () => {
           Checkbox label 1
         </Checkbox>
         <Checkbox value="cb2">Checkbox label 2</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").click().and("not.be.checked");
     cy.get("input[value='cb2']").click().and("be.checked");
@@ -138,13 +138,13 @@ describe("CheckboxGroup Help", () => {
     cy.mount(
       <CheckboxGroup {...fieldPropsTest} description="Number 5 likes input.">
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get(fieldDesc)
       .should("have.text", "Number 5 likes input.")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-describedby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -156,13 +156,13 @@ describe("CheckboxGroup Help", () => {
         validationState="invalid"
       >
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-describedby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -175,14 +175,14 @@ describe("CheckboxGroup Help", () => {
         validationState="invalid"
       >
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get(fieldDesc).should("not.exist");
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(fieldGroup).should("have.attr", "aria-describedby", id)
+        cy.get(fieldGroup).should("have.attr", "aria-describedby", id),
       );
   });
 });
@@ -200,7 +200,7 @@ describe("CheckboxGroup custom labels", () => {
         <Checkbox id="cb1" value="cb1" />
         <label htmlFor="cb2">Label2</label>
         <Checkbox id="cb2" value="cb2" />
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     cy.get("input[value='cb1']").click();
     cy.get("@onChangeSpy").should("have.been.calledWith", ["cb2", "cb1"]);

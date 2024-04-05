@@ -1,0 +1,9 @@
+{
+  "name": "@actionishope/eslint-config-shelley",
+  "version": "1.0.0",
+  "description": "Shareable Eslint configuration for Shelley",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC"
+}

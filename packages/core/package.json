@@ -1,0 +1,64 @@
+{
+  "name": "@actionishope/shelley-core",
+  "version": "4.1.9",
+  "license": "ISC",
+  "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/action-is-hope/shelley.git"
+  },
+  "keywords": [
+    "a11y",
+    "stylable",
+    "react",
+    "typescript"
+  ],
+  "author": "action-is-hope<actionshopeorg@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/action-is-hope/shelley/issues"
+  },
+  "homepage": "https://github.com/action-is-hope/shelley#readme",
+  "main": "indexLib.js",
+  "types": "indexLib.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "**/*.ts",
+    "**/*.js",
+    "styles/**/*.js",
+    "indexLib.js",
+    "**/*.map",
+    "**/*.st.css"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "copy": "copyfiles package.json \"./package.json\" \"./README.md\" dist",
+    "prebuild": "npm run clean",
+    "build-stylable-types": "stc",
+    "prepare": "npm run clean && npm run copy && npm run build-stylable-types && npm run build-components-stcss && npm run build-components-styles-stcss",
+    "build-components-stcss": "stc --srcDir=\"./src\" --outDir=\"./dist\" --stcss",
+    "build-components-styles-stcss": "stc --srcDir=\"./src/styles\" --outDir=\"./dist/styles\" --stcss",
+    "lint": "eslint . -f codeframe",
+    "typecheck": "tsc --noEmit",
+    "test": "jest --runInBand",
+    "cypress": "cypress run --component --browser chrome",
+    "cypress:ui": "cypress open",
+    "start": "npm run build-stylable-types && npm run storybook",
+    "storybook": "start-storybook -p 6006 --no-manager-cache",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@react-aria/toast": "^3.0.0-beta.7",
+    "@react-aria/utils": "^3.22.0",
+    "@react-stately/tree": "^3.7.4",
+    "@react-types/menu": "^3.9.6",
+    "@react-types/overlays": "^3.8.4",
+    "@react-types/shared": "^3.22.0",
+    "downshift": "^8.2.3",
+    "react-aria": "^3.30.0",
+    "react-focus-on": "^3.9.1",
+    "react-stately": "^3.28.0",
+    "react-transition-group": "^4.4.5"
+  }
+}

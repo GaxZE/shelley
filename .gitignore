@@ -63,3 +63,5 @@ cypress/screenshots
 
 # Stylable types
 st-types
+
+*.tsbuildinfo

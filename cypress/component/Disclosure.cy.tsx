@@ -119,7 +119,7 @@ describe("Disclosure", () => {
     cy.mount(
       <BasicDisclosure
         triggerProps={{ vol: 3, tone: 1, variant: "primary", iconPos: "start" }}
-      />
+      />,
     );
     cy.get(trigger)
       .should("have.attr", "class")

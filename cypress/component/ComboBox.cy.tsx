@@ -17,7 +17,7 @@ const itemTwo = '[data-key="item-two"]';
 const itemThree = '[data-key="item-three"]';
 
 const BasicComboBox = function <T extends object>(
-  props: Omit<ComboBoxProps<T>, "children">
+  props: Omit<ComboBoxProps<T>, "children">,
 ) {
   return (
     <div style={{ padding: "0 10px" }}>
@@ -36,7 +36,7 @@ const BasicComboBox = function <T extends object>(
 };
 
 const DynamicCollection = function <T extends object>(
-  props: Omit<SelectProps<T>, "children">
+  props: Omit<SelectProps<T>, "children">,
 ) {
   const options = [
     { id: 1, name: "Item One" },
@@ -100,7 +100,7 @@ describe("Basic ComboBox", () => {
           // Non-aria attributes
           .and("have.attr", "autocomplete", "off")
           .and("have.attr", "autocorrect", "off")
-          .and("have.attr", "spellcheck", "false")
+          .and("have.attr", "spellcheck", "false"),
       );
     // Trigger has listbox popup.
     cy.get(trigger).should("have.attr", "aria-haspopup", "listbox");
@@ -121,7 +121,7 @@ describe("Basic ComboBox", () => {
         cy
           .get(trigger)
           .should("have.attr", "aria-labelledby")
-          .and("contain", id)
+          .and("contain", id),
       );
   });
 
@@ -232,7 +232,7 @@ describe("Style checks", () => {
     cy.get(comboBoxField)
       .invoke("outerWidth")
       .then((width) =>
-        cy.get(popup).invoke("outerWidth").should("equal", width)
+        cy.get(popup).invoke("outerWidth").should("equal", width),
       );
   });
 });
@@ -320,18 +320,18 @@ describe("ComboBox Help", () => {
       .should("have.text", "Number 5 likes input.")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(textInput).should("have.attr", "aria-describedby", id)
+        cy.get(textInput).should("have.attr", "aria-describedby", id),
       );
   });
   it("renders errorMessage correctly.", () => {
     cy.mount(
-      <BasicComboBox errorMessage="No input!" validationState="invalid" />
+      <BasicComboBox errorMessage="No input!" validationState="invalid" />,
     );
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(textInput).should("have.attr", "aria-describedby", id)
+        cy.get(textInput).should("have.attr", "aria-describedby", id),
       );
   });
 
@@ -341,14 +341,14 @@ describe("ComboBox Help", () => {
         description="Number 5 likes input."
         errorMessage="No input!"
         validationState="invalid"
-      />
+      />,
     );
     cy.get(fieldDesc).should("not.exist");
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
       .then((id) =>
-        cy.get(textInput).should("have.attr", "aria-describedby", id)
+        cy.get(textInput).should("have.attr", "aria-describedby", id),
       );
   });
 });

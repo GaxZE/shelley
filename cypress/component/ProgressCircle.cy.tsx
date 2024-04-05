@@ -19,7 +19,7 @@ describe("ProgressCircle", () => {
 
   it("renders class with custom class name", () => {
     cy.mount(
-      <ProgressCircle className="cypress-test" value={50} {...testProps} />
+      <ProgressCircle className="cypress-test" value={50} {...testProps} />,
     );
 
     cy.get(progressCircle)
@@ -38,7 +38,7 @@ describe("ProgressCircle", () => {
           onClick={() =>
             onPressSpy(
               (ref?.current?.attributes as DataIdDOMAttribute)?.["data-id"]
-                ?.value
+                ?.value,
             )
           }
         >
@@ -50,7 +50,7 @@ describe("ProgressCircle", () => {
           ref={ref}
           {...testProps}
         />
-      </>
+      </>,
     );
     cy.get(":button").click();
     cy.get("@onPressSpy").should("have.been.calledWith", "progressCircle");

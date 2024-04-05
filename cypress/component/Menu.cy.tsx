@@ -7,7 +7,7 @@ const itemTwo = '[data-key="item-two"]';
 const itemThree = '[data-key="item-three"]';
 
 const BasicMenu = function <T extends object>(
-  props: Omit<MenuProps<T>, "children">
+  props: Omit<MenuProps<T>, "children">,
 ) {
   return (
     <Menu aria-label="Basic Menu" {...props}>
@@ -31,7 +31,7 @@ describe("Basic Menu", () => {
         aria-describedby="Described by"
         // Identifies the element (or elements) that provide a detailed, extended description for the object.
         aria-details="Details"
-      />
+      />,
     );
     cy.get(menu)
       .should("have.attr", "id", "example1")
@@ -54,7 +54,7 @@ describe("Basic Menu", () => {
   it("keyboard focus wraps (loops)", () => {
     cy.mount(<BasicMenu />);
     cy.get("[data-cy-root] li:first-child").type(
-      "{downArrow}{downArrow}{downArrow}{downArrow}"
+      "{downArrow}{downArrow}{downArrow}{downArrow}",
     );
     cy.get(itemTwo).should("be.focused");
   });
@@ -62,7 +62,7 @@ describe("Basic Menu", () => {
   it("keyboard focus should not wrap", () => {
     cy.mount(<BasicMenu shouldFocusWrap={false} />);
     cy.get("[data-cy-root]").type(
-      "{downArrow}{downArrow}{downArrow}{downArrow}"
+      "{downArrow}{downArrow}{downArrow}{downArrow}",
     );
     cy.get(itemThree).should("be.focused");
   });
@@ -103,7 +103,7 @@ describe("Uncontrolled menu selection", () => {
       <BasicMenu
         selectionMode="single"
         defaultSelectedKeys={new Set(["item-two"])}
-      />
+      />,
     );
     cy.get(itemTwo).should("have.attr", "aria-checked").and("equal", "true");
   });
@@ -122,13 +122,13 @@ describe("Uncontrolled menu selection", () => {
           // Send the first value of the resulting set to the on selection spy.
           onSelectionChangeSpy([...i][0]);
         }}
-      />
+      />,
     );
     // Select item
     cy.get(itemThree).click();
     cy.get("@onSelectionChangeSpy").should(
       "have.been.calledWith",
-      "item-three"
+      "item-three",
     );
     // And another
     cy.get(itemOne).click();
@@ -144,7 +144,7 @@ describe("Uncontrolled menu selection", () => {
 
 // Controlled Menu
 const ControlledMenu = function <T extends object>(
-  props: Omit<MenuProps<T>, "children">
+  props: Omit<MenuProps<T>, "children">,
 ) {
   const [selected, setSelected] = useState(props.selectedKeys || new Set([]));
   return (
@@ -181,7 +181,7 @@ describe("Controlled menu selection", () => {
       <ControlledMenu
         selectionMode="single"
         selectedKeys={new Set(["item-two"])}
-      />
+      />,
     );
     cy.get(itemTwo).should("be.focused");
   });
@@ -201,7 +201,7 @@ describe("Controlled menu selection", () => {
     cy.get(itemThree).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-one, item-three"
+      "item-one, item-three",
     );
   });
 
@@ -212,12 +212,12 @@ describe("Controlled menu selection", () => {
     cy.get(itemOne).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-three, item-one"
+      "item-three, item-one",
     );
     cy.get(itemTwo).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-three, item-one, item-two"
+      "item-three, item-one, item-two",
     );
     // deselect
     cy.get(itemOne).click();
@@ -229,7 +229,7 @@ describe("Controlled menu selection", () => {
     cy.get(itemThree).click();
     cy.get('[data-id="selected-items"]').should(
       "have.text",
-      "item-two, item-one, item-three"
+      "item-two, item-one, item-three",
     );
   });
 });

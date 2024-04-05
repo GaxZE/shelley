@@ -38,7 +38,7 @@ describe("Basic Toast", () => {
     cy.mount(
       <Provider>
         <BasicToast title="Show Default Toast" />
-      </Provider>
+      </Provider>,
     );
     cy.get(toastRegion).should("not.exist");
     cy.get(toastTrigger).realClick();
@@ -49,7 +49,7 @@ describe("Basic Toast", () => {
       .and("have.attr", "role", "alert")
       .invoke("attr", "aria-labelledby")
       .then((labelledbyId) =>
-        cy.get(toastTitle).should("have.attr", "id", labelledbyId)
+        cy.get(toastTitle).should("have.attr", "id", labelledbyId),
       );
     cy.get(toastClose).focus().realPress("Enter");
     cy.wait(500);
@@ -62,7 +62,7 @@ describe("Toast", () => {
     cy.mount(
       <Provider>
         <BasicToast title="Show Default Toast" />
-      </Provider>
+      </Provider>,
     );
     cy.get(toastRegion).should("not.exist");
     cy.get(toastTrigger).realClick();

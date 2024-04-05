@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "rootDirs": [ "./src","./st-types" ]
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/stories/**/*",
+    "src/_codux/**/*",
+    "src/**/__tests__/*"
+  ]
+}

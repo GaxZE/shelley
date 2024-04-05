@@ -29,7 +29,7 @@ export const PositionTemplate = (props: Omit<PopupProps, "triggerRef">) => {
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     state,
-    triggerRef
+    triggerRef,
   );
 
   return (
@@ -67,7 +67,7 @@ export const FocusPopupTemplate = (props: Omit<PopupProps, "triggerRef">) => {
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     state,
-    triggerRef
+    triggerRef,
   );
 
   return (
@@ -109,7 +109,7 @@ export const TriggerCustomContent = (props: Omit<PopupProps, "triggerRef">) => {
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     state,
-    triggerRef
+    triggerRef,
   );
   return (
     <>
@@ -217,7 +217,7 @@ describe("Focusing and Dismissing", () => {
       <FocusPopupTemplate
         isDismissable={false}
         isKeyboardDismissDisabled={true}
-      />
+      />,
     );
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
@@ -472,7 +472,7 @@ describe("LoadMore", () => {
     cy.mount(
       <TriggerCustomContent loadingState="idle" onLoadMore={onLoadMore}>
         <div>Content</div>
-      </TriggerCustomContent>
+      </TriggerCustomContent>,
     );
     cy.get(trigger).realClick();
     cy.get(popup).should("exist");
@@ -484,7 +484,7 @@ describe("LoadMore", () => {
     cy.mount(
       <TriggerCustomContent loadingState="idle" onLoadMore={onLoadMore}>
         <div style={{ height: "110vh" }}>Content</div>
-      </TriggerCustomContent>
+      </TriggerCustomContent>,
     );
     cy.get(trigger).realClick();
     cy.get(popup).should("exist");
@@ -496,7 +496,7 @@ describe("LoadMore", () => {
     cy.mount(
       <TriggerCustomContent loadingState="idle" onLoadMore={onLoadMore}>
         <div style={{ height: "110vh" }}>Content</div>
-      </TriggerCustomContent>
+      </TriggerCustomContent>,
     );
     cy.get(trigger).realClick();
     cy.get(popup).should("exist");

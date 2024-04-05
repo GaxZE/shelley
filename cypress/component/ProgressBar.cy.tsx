@@ -31,14 +31,14 @@ describe("ProgressBar", () => {
 
   it("renders value label", () => {
     cy.mount(
-      <ProgressBar valueLabel="Value label" value={50} {...testProps} />
+      <ProgressBar valueLabel="Value label" value={50} {...testProps} />,
     );
     cy.get(valueLabel).should("exist").and("have.text", "Value label");
   });
 
   it("renders class with custom class name", () => {
     cy.mount(
-      <ProgressBar className="cypress-test" value={50} {...testProps} />
+      <ProgressBar className="cypress-test" value={50} {...testProps} />,
     );
 
     cy.get(progressBar)
@@ -60,7 +60,7 @@ describe("ProgressBar", () => {
                 ref?.current?.attributes as {
                   "data-id"?: { value: string };
                 }
-              )?.["data-id"]?.value
+              )?.["data-id"]?.value,
             )
           }
         >
@@ -72,7 +72,7 @@ describe("ProgressBar", () => {
           ref={ref}
           {...testProps}
         />
-      </>
+      </>,
     );
     cy.get(":button").click();
     cy.get("@onPressSpy").should("have.been.calledWith", "progressBar");

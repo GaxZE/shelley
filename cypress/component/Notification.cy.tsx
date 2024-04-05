@@ -40,11 +40,11 @@ describe("Inline Notification", () => {
     cy.mount(
       <InlineNotification role="info">
         <p data-id="inline-notification--children">Children</p>
-      </InlineNotification>
+      </InlineNotification>,
     );
     cy.get('[data-id="inline-notification--children"]').should(
       "contain.text",
-      "Children"
+      "Children",
     );
   });
 

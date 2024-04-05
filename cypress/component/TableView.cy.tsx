@@ -257,12 +257,12 @@ describe("TableView", () => {
       cy.get(table + " tbody td:first-child").should(
         "have.attr",
         "role",
-        "rowheader"
+        "rowheader",
       );
       cy.get(table + " tbody td:not(:first-child)").should(
         "have.attr",
         "role",
-        "gridcell"
+        "gridcell",
       );
     });
 
@@ -399,7 +399,7 @@ describe("TableView", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(table + " thead tr th:first-child > label > span > input").check();
       cy.get(table + " tbody tr td:first-child > label > span > input").should(
-        "be.checked"
+        "be.checked",
       );
     });
 
@@ -409,10 +409,10 @@ describe("TableView", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(table + " thead tr th:first-child > label > span > input").check();
       cy.get(
-        table + " thead tr th:first-child > label > span > input"
+        table + " thead tr th:first-child > label > span > input",
       ).uncheck();
       cy.get(table + " tbody tr td:first-child > label > span > input").should(
-        "not.be.checked"
+        "not.be.checked",
       );
     });
 
@@ -421,7 +421,8 @@ describe("TableView", () => {
     it("should select a row when checkbox is checked", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(
-        table + " tbody tr:nth-child(3) > td:first-child > label > span > input"
+        table +
+          " tbody tr:nth-child(3) > td:first-child > label > span > input",
       ).check();
       cy.get(table + " tbody tr:nth-child(3)")
         .should("have.attr", "aria-selected", "true")
@@ -441,7 +442,7 @@ describe("TableView", () => {
     it("should unselect a row when checkbox is unchecked", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(
-        table + " tbody tr:first-child > td:first-child > label > span > input"
+        table + " tbody tr:first-child > td:first-child > label > span > input",
       ).uncheck();
       cy.get(table + " tbody tr:first-child")
         .should("not.have.attr", "aria-selected", "true")
@@ -483,7 +484,7 @@ describe("TableView", () => {
           selectionMode="multiple"
           defaultSelectedKeys={["2", "4"]}
           data-id="table"
-        />
+        />,
       );
       cy.get(table + " tbody tr:nth-child(2)")
         .should("have.attr", "aria-selected", "true")
@@ -507,7 +508,7 @@ describe("TableView", () => {
           selectionMode="multiple"
           data-id="table"
           disabledKeys={["2"]}
-        />
+        />,
       );
       cy.get(table + " tbody tr:nth-child(2)")
         .should("not.have.attr", "aria-selected", "true")

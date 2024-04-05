@@ -76,7 +76,7 @@ describe("Dialog Trigger", () => {
     it("onOpenChange - popup", () => {
       const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
       cy.mount(
-        <BasicContentTrigger onOpenChange={onOpenChangeSpy} type="popup" />
+        <BasicContentTrigger onOpenChange={onOpenChangeSpy} type="popup" />,
       );
       cy.get(trigger).realClick();
       cy.get("@onOpenChangeSpy").should("have.been.called");
@@ -186,7 +186,7 @@ describe("Dialog Trigger", () => {
       });
       it("isKeyboardDismissDisabled", () => {
         cy.mount(
-          <BasicContentTrigger type="popup" isKeyboardDismissDisabled />
+          <BasicContentTrigger type="popup" isKeyboardDismissDisabled />,
         );
         cy.get(trigger).realClick();
         cy.get(popup).should("exist");
@@ -267,7 +267,7 @@ describe("Dialog Trigger", () => {
           <DialogWithFocusableContent
             type="popup"
             focusOnProps={{ autoFocus: false }}
-          />
+          />,
         );
         cy.get(trigger).realClick();
         cy.get("[data-focus-button]").should("not.be.focused");
@@ -286,7 +286,7 @@ describe("Dialog Trigger", () => {
               onActivation: onActivationSpy,
               onDeactivation: onDeactivationSpy,
             }}
-          />
+          />,
         );
         cy.get(trigger).realClick();
         cy.realPress("Escape");
@@ -304,7 +304,7 @@ describe("Dialog Trigger", () => {
           <DialogWithFocusableContent
             type="popup"
             focusOnProps={{ scrollLock: false }}
-          />
+          />,
         );
         cy.get(trigger).realClick();
         cy.realPress("PageDown");
@@ -337,7 +337,7 @@ describe("Dialog Trigger", () => {
             <ActionButton data-action-button-outside>
               Outside shard
             </ActionButton>
-          </div>
+          </div>,
         );
         cy.get(trigger).realClick();
         cy.realPress("Tab");
